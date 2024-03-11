@@ -17,14 +17,14 @@ export class Plugin extends PluginCore {
             The page itself is implemented in the _ServerSettingsPage.ts 
         */
         customerSettingsPage: {
-            id: "BPPCustomerSettings",
-            title: "BPP customer settings page",
-            type: "BPPcs",
-            enabled: true,
+            id: "SIGN_OVERVIEWCustomerSettings",
+            title: "SIGN_OVERVIEW customer settings page",
+            type: "SIGN_OVERVIEWcs",
+            enabled: false,
             defaultSettings: {
                 myServerSetting: "default value for setting defined in Interfaces.ts",
             },
-            settingName: "BPP_settings",
+            settingName: "SIGN_OVERVIEW_settings",
             help: "This is my help text",
             helpUrl:"https://docs23.matrixreq.com"
         },
@@ -32,14 +32,14 @@ export class Plugin extends PluginCore {
             The page itself is implemented in the _ProjectSetingsPage.ts 
         */
         projectSettingsPage: {
-            id: "BPPprojectsettings",
-            title: "BPP projectsettings page",
-            type:"BPPps",
+            id: "SIGN_OVERVIEWprojectsettings",
+            title: "SIGN_OVERVIEW projectsettings page",
+            type:"SIGN_OVERVIEWps",
             enabled: true,
             defaultSettings: {
                 myProjectSetting:  "default value for setting defined in Interfaces.ts",
             },
-            settingName: "BPP_settings",
+            settingName: "SIGN_OVERVIEW_settings",
             help: "This is my help text",
             helpUrl:"https://docs23.matrixreq.com"
         },
@@ -47,14 +47,14 @@ export class Plugin extends PluginCore {
             The tool itself is implemented in the _Tool.ts 
         */
         menuToolItem: {
-            enabled: true,
+            enabled: false,
             title:"matrix-ui-plugin-boilerplate-menuitem",
         },
         /*  Add a custom field to enter some data in the UI - set enabled to false if not needed.
             The field itself is implemented in the _Control.ts 
         */
         field: {
-            enabled: true,
+            enabled: false,
             fieldType: "matrix-ui-plugin-boilerplate",
             title: "matrix-ui-plugin-boilerplate-field",
             fieldConfigOptions: {
@@ -77,8 +77,8 @@ export class Plugin extends PluginCore {
         */
         dashboard: {        
             
-            id:"BPP",
-            title: "BPP dashboard page",
+            id:"SIGN_OVERVIEW",
+            title: "Sign Overview",
             enabled: true,
             icon: "fal fa-cog",
             parent: "DASHBOARDS",

@@ -18,8 +18,8 @@
     "check": "tsc --noEmit",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src --ext .ts",
-    "parcel": "parcel src/BPP/Main.ts --dist-dir /home/clouds/clouds/custom/js --no-hmr",
-    "parcel-dist": "parcel build src/BPP/Main.ts"
+    "parcel": "parcel src/SIGN_OVERVIEW/Main.ts --dist-dir /Users/francois/git/matrix-docker/devstack/data/home/clouds/release237/custom/js --no-hmr",
+    "parcel-dist": "parcel build src/SIGN_OVERVIEW/Main.ts"
   },
   "author": "",
   "license": "ISC",
