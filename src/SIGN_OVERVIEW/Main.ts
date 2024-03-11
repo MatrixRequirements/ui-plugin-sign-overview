@@ -35,7 +35,7 @@ export class Plugin extends PluginCore {
             id: "SIGN_OVERVIEWprojectsettings",
             title: "SIGN_OVERVIEW projectsettings page",
             type:"SIGN_OVERVIEWps",
-            enabled: true,
+            enabled: false,
             defaultSettings: {
                 myProjectSetting:  "default value for setting defined in Interfaces.ts",
             },
