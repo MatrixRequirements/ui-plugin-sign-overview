@@ -1,9 +1,9 @@
 {
-  "name": "matrix-ui-plugin-boilerplate",
+  "name": "sign-overview",
   "version": "1.0.0",
-  "description": "Awesome matrix-ui-plugin-boilerplate created by francoischasseur",
+  "description": "Sign obverview plugin for Matrix",
   "repository": {
-    "url": "https://github.com/MatrixRequirements/matrix-ui-plugin-boilerplate"
+    "url": "https://github.com/MatrixRequirements/ui-plugin-sign-overview"
   },
   "targets": {
     "default": {
