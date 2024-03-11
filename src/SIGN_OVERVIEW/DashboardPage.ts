@@ -114,7 +114,7 @@ export class DashboardPage {
         let tr = $("<tr></tr>").appendTo(thead);
         tr.append("<th>DOC</th>")
         tr.append("<th>SIGN item</th>").css("width", "20%");
-        tr.append("<th>Sign Creation date</th>");
+        tr.append("<th>SIGN Creation date</th>");
         tr.append("<th>Signature</th>");
         let tbody = $("<tbody></tbody>").appendTo(table);
         for (let item of result.needles) {
