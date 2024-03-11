@@ -51,7 +51,7 @@ jobs:
 
       - name: Install dependencies and compile
         run: |
-          npm install
+          npm install --force
           npm run parcel-dist
 
       - name: Lint the code
