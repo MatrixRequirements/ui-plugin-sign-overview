@@ -15,7 +15,6 @@ import { Plugin } from "./Main";
             
             return $(`
                 <div class="panel-body-v-scroll fillHeight">
-                    <div>This is my content : ${settings.myProjectSetting}</div>
                     <div id="controls"></div>
                 </div>
                 `);
@@ -71,7 +70,10 @@ import { Plugin } from "./Main";
             self.settingsOriginal = self.settings();
             self.settingsChanged = { ...self.settingsOriginal };
             let dom = self.getSettingsDOM(self.settingsChanged);
-            ml.UI.addTextInput($("#controls",dom), "My Project setting", self.settingsChanged, "myProjectSetting",self.paramChanged);
+            ml.UI.addCheckbox($("#controls",dom), "Enabled", self.settingsChanged, "enabled", self.paramChanged) ;
+            ml.UI.addTextInput($("#controls",dom), "Audit trail section name", self.settingsChanged, "auditTrailSectionName",self.paramChanged);
+            ml.UI.addTextInput($("#controls",dom), "Audit trail Columns to display (comma separated)", self.settingsChanged, "auditTrailColumns",self.paramChanged);
+
             app.itemForm.append(dom);
         };
 

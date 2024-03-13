@@ -35,9 +35,11 @@ export class Plugin extends PluginCore {
             id: "SIGN_OVERVIEWprojectsettings",
             title: "SIGN_OVERVIEW projectsettings page",
             type:"SIGN_OVERVIEWps",
-            enabled: false,
+            enabled: true,
             defaultSettings: {
-                myProjectSetting:  "default value for setting defined in Interfaces.ts",
+                enabled:false,
+                auditTrailColumns: "",
+                auditTrailSectionName: "Audit Trail",
             },
             settingName: "SIGN_OVERVIEW_settings",
             help: "This is my help text",
@@ -110,7 +112,14 @@ export class Plugin extends PluginCore {
         
         // if not:
         // this.enabledInContext = false;
+
     }
+
+    protected enableDashboard(): boolean {
+        let settings = { ...Plugin.config.projectSettingsPage.defaultSettings, ...IC.getSettingJSON(Plugin.config.projectSettingsPage.settingName, {}) };
+        return  settings.enabled
+    }
+
 
     /** this method is called just before the rendering of an item is done
     * It is also called when opening the create item dialog.
@@ -123,6 +132,7 @@ export class Plugin extends PluginCore {
         
         // if not:
         // this.enabledInContext = false;
+
     }
 }
 

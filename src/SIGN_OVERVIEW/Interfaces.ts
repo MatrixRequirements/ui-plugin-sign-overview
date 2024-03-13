@@ -21,8 +21,9 @@ export interface IServerSettings {
 * The user can edit these in the admin through the Project Setting Page
 */
 export interface IProjectSettings {
-    /** example of a project setting */
-    myProjectSetting:string; 
+    enabled:boolean;
+    auditTrailColumns: string;
+    auditTrailSectionName: string;
 }
 
 /** Setting for custom fields 
