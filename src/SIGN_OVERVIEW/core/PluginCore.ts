@@ -85,7 +85,7 @@ export interface IPluginSettingPage<T> {
 
 
 export abstract class PluginCore implements IPlugin {
-    static  getServerSetting(  settingId:string, defaultValue: any ):IServerSettings {
+    static  getServerSetting(  settingId:string, defaultValue: unknown ):IServerSettings {
 
         let val = "";
         for(let idx=0;idx<matrixSession.serverConfig.customerSettings.length;idx++) {

@@ -71,8 +71,13 @@ import { Plugin } from "./Main";
             self.settingsChanged = { ...self.settingsOriginal };
             let dom = self.getSettingsDOM(self.settingsChanged);
             ml.UI.addCheckbox($("#controls",dom), "Enabled", self.settingsChanged, "enabled", self.paramChanged) ;
+            $("#controls",dom).append("<hr>");
             ml.UI.addTextInput($("#controls",dom), "Audit trail section name", self.settingsChanged, "auditTrailSectionName",self.paramChanged);
-            ml.UI.addTextInput($("#controls",dom), "Audit trail Columns to display (comma separated)", self.settingsChanged, "auditTrailColumns",self.paramChanged);
+            ml.UI.addTextInput($("#controls",dom), "Audit trail Columns to display <br> (comma separated)", self.settingsChanged, "auditTrailColumns",self.paramChanged);
+            $("#controls",dom).append("<hr>");
+            ml.UI.addTextInput($("#controls",dom), "Column title for Audit trail", self.settingsChanged, "auditTrailDisplayName",self.paramChanged);
+            ml.UI.addTextInput($("#controls",dom), "Column title for Sign Creation Date", self.settingsChanged, "signCreationDateDisplayName",self.paramChanged);
+            ml.UI.addCheckbox($("#controls",dom), "Show Signatures column", self.settingsChanged, "showSignatures", self.paramChanged) ;
 
             app.itemForm.append(dom);
         };

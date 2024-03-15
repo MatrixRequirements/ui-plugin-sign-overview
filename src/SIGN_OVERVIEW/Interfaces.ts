@@ -21,9 +21,12 @@ export interface IServerSettings {
 * The user can edit these in the admin through the Project Setting Page
 */
 export interface IProjectSettings {
+    showSignatures: boolean;
     enabled:boolean;
     auditTrailColumns: string;
     auditTrailSectionName: string;
+    signCreationDateDisplayName: string;
+    auditTrailDisplayName: string;
 }
 
 /** Setting for custom fields 

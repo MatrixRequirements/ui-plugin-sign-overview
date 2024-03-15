@@ -1,6 +1,5 @@
 import { IProjectSettings } from "./Interfaces";
 import { Plugin } from "./Main";
-import { css } from "jquery";
 
 // eslint-disable-next-line no-unused-vars
 export class DashboardPage {
@@ -116,16 +115,25 @@ export class DashboardPage {
         let thead = $("<thead></thead>").appendTo(table);
         let tr = $("<tr></tr>").appendTo(thead);
         tr.append("<th>DOC</th>");
-        tr.append("<th>Audit trail</th>").css("width", "20%");
+        tr.append(`<th>${this.settings.auditTrailDisplayName}</th>`).css("width", "20%");
         tr.append("<th>SIGN item</th>").css("width", "20%");
-        tr.append("<th>SIGN Creation date</th>");
-        tr.append("<th>Signature</th>");
+        tr.append(`<th>${this.settings.signCreationDateDisplayName}</th>`);
+        if( this.settings.showSignatures){
+            tr.append("<th>Signature</th>");
+        }
         let tbody = $("<tbody></tbody>").appendTo(table);
         for (let item of result.needles) {
 
             if (item.downLinkList == undefined || item.downLinkList.length == 0) {
                 let auditTrailValue = this.getAuditTrailValue(item, dhfFields, columns);
-                let tr = $(`<tr><td>${ml.Item.parseRef(item.itemOrFolderRef).id}!</td><td>${auditTrailValue}</td><td></td><td></td><td></td></tr>`).appendTo(tbody);
+                if( this.settings.showSignatures) {
+                    $(`<tr><td>${ml.Item.parseRef(item.itemOrFolderRef).id}!</td><td>${auditTrailValue}</td><td></td><td></td><td></td></tr>`).appendTo(tbody);
+                }
+                else{
+                     $(`<tr><td>${ml.Item.parseRef(item.itemOrFolderRef).id}!</td><td>${auditTrailValue}</td><td></td><td></td></tr>`).appendTo(tbody);
+
+                }
+
                 continue;
             }
             let signList = item?.downLinkList.map((link) => "id = " + ml.Item.parseRef(link.itemRef).id).join(" OR ");
@@ -143,9 +151,12 @@ export class DashboardPage {
 
                 $("<td>" + (ml.Item.parseRef(signItem.itemOrFolderRef).id) + "!</td>").css("width", "30%").appendTo(tr);
                 $("<td>" + ml.UI.DateTime.renderCustomerHumanDate(new Date(signItem.creationDate), false) + "</td>").css("width", "150px").appendTo(tr);
+
+              if(this.settings.showSignatures === true){
+
                 let signaturesControl = $("<div/>").css("width", "25%");
                 let signatureTd = $("<td></td>").appendTo(tr);
-                if (signatureField != undefined && signItem.fieldVal[0] != undefined && signItem.fieldVal[0].value != undefined) {
+                if ( signatureField != undefined && signItem.fieldVal[0] != undefined && signItem.fieldVal[0].value != undefined) {
                     let signOption = this.SIGNOption;
                     signOption.id = signItem.itemOrFolderRef;
                     signOption["fieldValue"] = "{}"; //  item.fieldVal[0].value;
@@ -162,6 +173,7 @@ export class DashboardPage {
                         li.append($("td:eq(1)", item).html());
                     });
                 }
+              }
                 signIndex++;
             }
 
@@ -175,7 +187,6 @@ export class DashboardPage {
     private render(control: JQuery) {
 
 
-        let panelBody = control.find(".panel-body");
         let selector = $(".selector", control);
         let result = $(".result", control);
         const itemSelection = new ItemSelectionTools();
@@ -268,9 +279,9 @@ export class DashboardPage {
                                 return fieldValue[columnsMap[col]];
                             }
                         }).join(" - ");
-                    lines += "<li>" + line + "</li>";
+                    lines += line + "<br>";
                 }
-                output = "<ul>" + lines + "</ul>";
+                output = lines;
 
             } else {
                 output = "&nbsp;";
